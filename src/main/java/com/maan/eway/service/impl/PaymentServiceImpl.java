@@ -13,9 +13,9 @@ public class PaymentServiceImpl implements PaymentService {
 
 	@Override
 	public SuccessRes PaymentSave(PaymentSaveReq req) {
-		String apiKey = "202cb962ac59075b964b07152d234b70";
-		String apiSecret = "81dc9bdb52d04dc20036dbd8313ed055";
-		String baseUrl = "http://example.com";
+		String apiKey = "ALLINSU-8Ylj0rPnRhVUkUSa";
+		String apiSecret = "65KJ4ABHl-5JU86L7D-2J254AG-0P636D5P";
+		String baseUrl = "https://apigw.selcommobile.com";
 
 
 
@@ -69,22 +69,30 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 	 public static void main(String[] args){
-		 String apiKey = "202cb962ac59075b964b07152d234b70";
-			String apiSecret = "81dc9bdb52d04dc20036dbd8313ed055";
-			String baseUrl = "http://example.com";
-
+		 String apiKey = "ALLINSU-8Ylj0rPnRhVUkUSa";
+			String apiSecret = "65KJ4ABHl-5JU86L7D-2J254AG-0P636D5P";
+			String baseUrl = "https://apigw.selcommobile.com";
+			//String baseUrl = "https://apigw.selcommobile.com";
 
 
 			// initalize a new Client instace with values of the base url, api key and api secret
 			ApigwClient client = new ApigwClient(baseUrl,apiKey,apiSecret);
 
 			// path relatiive to base url
-			String orderPath = "/v1/checkout/create-order";
+			//String orderPath = "/v1/checkout/create-order";
+			String orderStatusPath = "/v1/checkout/order-status";
 
 			// data
-			JsonObject orderDict = new JsonObject();
-			orderDict.addProperty("vendor","VENDORTILL");
-			orderDict.addProperty("order_id","1218d00Y");
+			JsonObject orderStatusDict = new JsonObject();
+			orderStatusDict.addProperty("order_id","9200708467");
+
+
+			//get order status
+			JsonObject response = client.getFunc(orderStatusPath ,orderStatusDict);
+			// data
+			/*JsonObject orderDict = new JsonObject();
+			orderDict.addProperty("vendor","ALLIANCEINSU");
+			orderDict.addProperty("order_id","985624317");
 			orderDict.addProperty("buyer_email", "john@example.com");
 			orderDict.addProperty("buyer_name", "John Joh");
 			orderDict.addProperty("buyer_userid", "");
@@ -94,7 +102,7 @@ public class PaymentServiceImpl implements PaymentService {
 			orderDict.addProperty("currency","TZS");
 			orderDict.addProperty("payment_methods","ALL");
 			orderDict.addProperty("redirect_url","aHR0cHM6Ly9leGFtcGxlLmNvbS8=");
-			orderDict.addProperty("cancel_url","aHR0cHM6Ly9leGFtcGxlLmNvbS8=");
+			orderDict.addProperty("cancel_url","aHR0cHM6Ly9kaWdpZ29hbGxpYW5jZS5jb20vaW5kZXhMb2dpbi5kbw==");
 			orderDict.addProperty("webhook","aHR0cHM6Ly9leGFtcGxlLmNvbS8=");
 			orderDict.addProperty("billing.firstname" , "John");
 			orderDict.addProperty("billing.lastname" , "Doe");
@@ -107,7 +115,7 @@ public class PaymentServiceImpl implements PaymentService {
 			orderDict.addProperty("billing.phone" , "255xxxxxxxxx");
 			orderDict.addProperty("shipping.firstname" , "John");
 			orderDict.addProperty("shipping.lastname" , "Doe");
-			orderDict.addProperty("shipping.address_1" , "969 Market");
+			//orderDict.addProperty("shipping.address_1" , "969 Market");
 			orderDict.addProperty("shipping.address_2" , "");
 			orderDict.addProperty("shipping.city" , "San Francisco");
 			orderDict.addProperty("shipping.state_or_region" , "CA");
@@ -116,11 +124,13 @@ public class PaymentServiceImpl implements PaymentService {
 			orderDict.addProperty("shipping.phone" , "255xxxxxxxxx");
 			orderDict.addProperty("buyer_remarks","None");
 			orderDict.addProperty("merchant_remarks","None");
-			orderDict.addProperty("no_of_items",  3);
+			orderDict.addProperty("no_of_items",  3);*/
 
 
 			//post data
-			JsonObject response = client.postFunc(orderPath ,orderDict);
+			//JsonObject response = client.postFunc(orderPath ,orderDict);
+			System.out.println(response.get("result"));
+			System.out.println(response.get("message"));
 	    };
 	
 	
